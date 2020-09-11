@@ -35,6 +35,10 @@ pre {
   padding: 0;
 }
 
+#nav > li {
+  min-width: 100px;
+}
+
 .explanation {
   text-align: left;
   padding: 5px 10px;
