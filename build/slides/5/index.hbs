@@ -1,17 +1,15 @@
 ---
 layout: layouts/main.hbs
 title: "Slide 📮: Drawing Pixel Perfect Lines on the JS Canvas"
-cardTitle: "devicePixelRatio"
+cardTitle: ""
 tags: slides
 ---
 
 <p class="explanation">
-  devicePixelRatio
+  Offset the canvas by 0.5 pixels
 </p>
 <p class="explanation">
-https://www.html5rocks.com/en/tutorials/canvas/hidpi/
-https://stackoverflow.com/questions/39943737/html5-canvas-translate0-5-0-5-not-fixing-line-blurryness
-http://diveintohtml5.info/canvas.html
+
 </p>
 <p>
   <pre><code>
@@ -20,5 +18,14 @@ http://diveintohtml5.info/canvas.html
 </p>
 <canvas id="canvas"></canvas><br/>
 <ul class="canvas-controls">
-  
+  <li>
+    <label>Line Spacing:</label>
+    <input type="range" id="c4-line-spacing" min="0" max="25" value="1">
+    <label class="slider-label" id="c4-line-spacing-label" for="c4-line-spacing"></label>
+  </li>
+  <li>
+    <label>Line Width:</label>
+    <input type="range" id="c4-line-width" min="0.25" max="10" step="0.25" value="1">
+    <label class="slider-label" id="c4-line-width-label" for="c4-line-width"></label>
+  </li>
 </ul>

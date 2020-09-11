@@ -1,6 +1,6 @@
-function drawCanvas4(spacing, lineWidth) {
+function drawCanvas3(spacing, lineWidth) {
   ctx.clearRect(0, 0, 100, 100);
-  ctx.translate(0.5, 0.5);
+  ctx.translate(-0.5, -0.5);
   ctx.lineWidth = parseInt(lineWidth);
   
   // Line 1
@@ -27,25 +27,26 @@ function drawCanvas4(spacing, lineWidth) {
 }
 
 // line Spacing
-const c4LineSpacing = document.getElementById("c4-line-spacing");
-const c4LineSpacingLabel = document.getElementById("c4-line-spacing-label");
-c4LineSpacingLabel.innerHTML = c4LineSpacing.value;
+const c3LineSpacing = document.getElementById("c3-line-spacing");
+const c3LineSpacingLabel = document.getElementById("c3-line-spacing-label");
+c3LineSpacingLabel.innerHTML = c3LineSpacing.value;
 
-c4LineSpacing.oninput = (event) => {
-  const v = c4LineSpacing.value;
-  c4LineSpacingLabel.innerHTML = v;
-  drawCanvas4(v, c4LineWidth.value);
+c3LineSpacing.oninput = (event) => {
+  const v = c3LineSpacing.value;
+  c3LineSpacingLabel.innerHTML = v;
+  drawCanvas3(v, c3LineWidth.value);
 }
 
 // line width
-const c4LineWidth = document.getElementById("c4-line-width");
-const c4LineWidthLabel = document.getElementById("c4-line-width-label");
-c4LineWidthLabel.innerHTML = c4LineWidth.value;
+const c3LineWidth = document.getElementById("c3-line-width");
+const c3LineWidthLabel = document.getElementById("c3-line-width-label");
+c3LineWidthLabel.innerHTML = c3LineWidth.value;
 
-c4LineWidth.oninput = (event) => {
-  const v = c4LineWidth.value;
-  c4LineWidthLabel.innerHTML = v;
-  drawCanvas4(c4LineSpacing.value, v);
+c3LineWidth.oninput = (event) => {
+  const v = c3LineWidth.value;
+  c3LineWidthLabel.innerHTML = v;
+  drawCanvas3(c3LineSpacing.value, v);
 }
 
-drawCanvas4(c4LineSpacing.value, c4LineWidth.value)
+drawCanvas3(c3LineSpacing.value, c3LineWidth.value)
+

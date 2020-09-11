@@ -1,55 +1,40 @@
 ---
 layout: layouts/main.hbs
-title: "Slide 📮: Drawing Pixel Perfect Lines on the JS Canvas"
-cardTitle: ""
+title: "Slide 2: Drawing Pixel Perfect Lines on the JS Canvas"
+cardTitle: "What About Close, Evenly Spaced Lines?"
 tags: slides
 ---
 
 <p class="explanation">
-  Offset the canvas by -0.5 pixels
+  Let's try an experiment with drawing evenly spaced lines. Using a for loop we should be able to draw a line from the top of the canvas to the bottom every other pixel. But what we get is a solid pink square, with a thin white stripe on the right side.
 </p>
 <p class="explanation">
-
+  It seems like this is because the lines are drawn on the canvas so that they slightly overlap with the pixel next to them. If we draw a line every other pixel they both overlap the middle pixel. Try raising and lowering the line spacing and line width to see the stripes emerge. Notice that lines with odd widths are blurry, but <a href="http://zetcode.com/gfx/html5canvas/lines/">lines with even widths are not!</a>
 </p>
 <p>
   <pre><code>
     ctx.clearRect(0, 0, 100, 100);
-    ctx.translate(-0.5, -0.5);
     ctx.lineWidth = parseInt(lineWidth);
-    
-    // Line 1
     ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(0, 40);
-    ctx.stroke();
-    
-    // Line 2
-    ctx.beginPath();
-    ctx.moveTo(25, 0);
-    ctx.lineTo(60, 40);
-    ctx.stroke();
-    
-    // Stripes
     for (var i = 0; i < 100; i += parseInt(spacing) + 1) {
-      ctx.beginPath();
-      ctx.moveTo(i, 50);
+      ctx.moveTo(i, 0);
       ctx.lineTo(i, 100);
-      ctx.stroke();
     }
+    ctx.stroke();
+    ctx.closePath();
     ctx.lineWidth = 1;
-    ctx.resetTransform();
   </code></pre>
 </p>
 <canvas id="canvas"></canvas><br/>
 <ul class="canvas-controls">
   <li>
     <label>Line Spacing:</label>
-    <input type="range" id="c3-line-spacing" min="0" max="25" value="1">
-    <label class="slider-label" id="c3-line-spacing-label" for="c3-line-spacing"></label>
+    <input type="range" id="c2-line-spacing" min="0" max="25" value="1">
+    <label class="slider-label" id="c2-line-spacing-label" for="c2-line-spacing"></label>
   </li>
   <li>
     <label>Line Width:</label>
-    <input type="range" id="c3-line-width" min="0.25" max="10" step="0.25" value="1">
-    <label class="slider-label" id="c3-line-width-label" for="c3-line-width"></label>
+    <input type="range" id="c2-line-width" min="0.25" step="0.25" max="10" value="1">
+    <label class="slider-label" id="c2-line-width-label" for="c2-line-width"></label>
   </li>
 </ul>
