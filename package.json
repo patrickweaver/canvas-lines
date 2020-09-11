@@ -1,0 +1,20 @@
+{
+  "name": "canvas-lines",
+  "version": "1.0.0",
+  "description": "A demo about drawing pixel perfect lines on the JS canvas",
+  "main": "server.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "rm -rf dist && npx @11ty/eleventy --serve --port=3000"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.0"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://github.com/patrickweaver/canvas-lines"
+  },
+  "license": "MIT"
+}
