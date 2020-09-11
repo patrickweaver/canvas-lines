@@ -28,6 +28,18 @@ module.exports = function(eleventyConfig) {
     return `<a href="${nextSlideRelUrl}">Next</a>`;
   });
 
+  eleventyConfig.addCollection("slidesSorted", function(collectionApi) {
+    // get unsorted items
+    const slides = collectionApi.getFilteredByTag("slides");
+    slides.sort((a, b) => {
+      const aSlideNumber = parseInt(a.data.title.split(":")[0].split(" ")[1]);
+      const bSlideNumber = parseInt(b.data.title.split(":")[0].split(" ")[1]);
+      return aSlideNumber - bSlideNumber;
+    })
+   return slides;
+  });
+  
+
   return {
     dir: {
       input: "build",

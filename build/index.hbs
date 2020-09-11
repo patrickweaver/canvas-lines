@@ -1,8 +1,10 @@
 <h2>Slides</h2>
 <ol class="slides-list">
-{{#each collections.slides }}
+{{#each collections.slidesSorted }}
   <li>
     <a href=".{{this.url}}">{{this.data.cardTitle}}</a>
   </li>
 {{/each}}
 </ol>
+
+<p><a href="https://github.com/patrickweaver/canvas-lines">View Source</a></p>
