@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Canvas Lines</title>
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>  
+  <body>
+    <h1>Canvas Lines</h1>
+    
+    <ul id="canvas-list">
+      <li>
+        <p>
+          1. By default drawing lines on the canvas produces blurry lines:
+        </p>
+        <p>
+          <pre><code>
+            ctx1.beginPath();
+            ctx1.moveTo(10, 0);
+            ctx1.lineTo(10, 90);
+            ctx1.moveTo(20, 0);
+            ctx1.lineTo(70, 50);
+            ctx1.stroke();
+            ctx1.closePath();
+          </code></pre>
+        </p>
+        <canvas id="canvas-1"></canvas>
+      </li>
+      
+  
+      <li>
+        <p>
+          2. Experiment with drawing evenly spaced lines:
+        </p>
+        <p>
+          <pre><code>
+            ctx2.lineWidth = parseInt(lineWidth);
+            ctx2.beginPath();
+            for (var i = 0; i < 100; i += parseInt(spacing) + 1) {
+              ctx2.moveTo(i, 0);
+              ctx2.lineTo(i, 100);
+            }
+            ctx2.stroke();
+            ctx2.closePath();
+            ctx2.lineWidth = 1;
+          </code></pre>
+        </p>
+        <canvas id="canvas-2"></canvas><br/>
+        <ul>
+          <li>
+            <label>Line Spacing:</label>
+            <input type="range" id="c2-line-spacing" min="0" max="25" value="1">
+            <label class="slider-label" id="c2-line-spacing-label" for="c2-line-spacing"></label>
+          </li>
+          <li>
+            <label>Line Width:</label>
+            <input type="range" id="c2-line-width" min="0.25" step="0.25" max="10" value="1">
+            <label class="slider-label" id="c2-line-width-label" for="c2-line-width"></label>
+          </li>
+        </ul>
+      </li>
+      
+      <li>
+        <p>
+          3. Offset the canvas by -0.5 pixels:
+        </p>
+        <p>
+          <pre><code>
+            ctx3.clearRect(0, 0, 100, 100);
+            ctx3.translate(-0.5, -0.5);
+            ctx3.lineWidth = parseInt(lineWidth);
+
+            // Line 1
+            ctx3.beginPath();
+            ctx3.moveTo(0, 0);
+            ctx3.lineTo(0, 40);
+            ctx3.stroke();
+
+            // Line 2
+            ctx3.beginPath();
+            ctx3.moveTo(25, 0);
+            ctx3.lineTo(60, 40);
+            ctx3.stroke();
+
+            // Stripes
+            for (var i = 0; i < 100; i += parseInt(spacing) + 1) {
+              ctx3.beginPath();
+              ctx3.moveTo(i, 50);
+              ctx3.lineTo(i, 100);
+              ctx3.stroke();
+            }
+            ctx3.lineWidth = 1;
+            ctx3.resetTransform();
+          </code></pre>
+        </p>
+        <canvas id="canvas-3"></canvas><br/>
+        <ul>
+          <li>
+            <label>Line Spacing:</label>
+            <input type="range" id="c3-line-spacing" min="0" max="25" value="1">
+            <label class="slider-label" id="c3-line-spacing-label" for="c3-line-spacing"></label>
+          </li>
+          <li>
+            <label>Line Width:</label>
+            <input type="range" id="c3-line-width" min="0.25" max="10" step="0.25" value="1">
+            <label class="slider-label" id="c3-line-width-label" for="c3-line-width"></label>
+          </li>
+        </ul>
+      </li>
+  
+      <li>
+        <p>
+          4. Offset the canvas by 0.5 pixels:
+        </p>
+        <p>
+          <pre><code>
+            ctx4.clearRect(0, 0, 100, 100);
+            ctx4.translate(-0.5, -0.5);
+            ctx4.lineWidth = parseInt(lineWidth);
+
+            // Line 1
+            ctx4.beginPath();
+            ctx4.moveTo(0, 0);
+            ctx4.lineTo(0, 40);
+            ctx4.stroke();
+
+            // Line 2
+            ctx4.beginPath();
+            ctx4.moveTo(25, 0);
+            ctx4.lineTo(60, 40);
+            ctx4.stroke();
+
+            // Stripes
+            for (var i = 0; i < 100; i += parseInt(spacing) + 1) {
+              ctx4.beginPath();
+              ctx4.moveTo(i, 50);
+              ctx4.lineTo(i, 100);
+              ctx4.stroke();
+            }
+            ctx4.lineWidth = 1;
+            ctx4.resetTransform();
+          </code></pre>
+        </p>
+        <canvas id="canvas-4"></canvas><br/>
+        <ul>
+          <li>
+            <label>Line Spacing:</label>
+            <input type="range" id="c4-line-spacing" min="0" max="25" value="1">
+            <label class="slider-label" id="c4-line-spacing-label" for="c4-line-spacing"></label>
+          </li>
+          <li>
+            <label>Line Width:</label>
+            <input type="range" id="c4-line-width" min="0.25" max="10" step="0.25" value="1">
+            <label class="slider-label" id="c4-line-width-label" for="c4-line-width"></label>
+          </li>
+        </ul>
+      </li>
+  
+    </ul>
+    
+    <div id="controls">
+      <ul>
+        <li>Canvases are <span id="scale-status" class="status"></span>scaled 3x. <button id="scale-button" onclick="disableScaling()">Disable</button></li>
+      </ul>
+    </div>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
