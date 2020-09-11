@@ -1,22 +1,48 @@
 ---
 layout: layouts/main.hbs
-title: "Slide 📮: Drawing Pixel Perfect Lines on the JS Canvas"
-cardTitle: "Scaling with CSS"
+title: "Slide 7: Drawing Pixel Perfect Lines on the JS Canvas"
+cardTitle: "Maybe just use rectangles?"
 tags: slides
 ---
 
 <p class="explanation">
-  Scaling with CSS (Not what is happening!)
+  In pixel space a line is really just a rectangle. The JS Canvas API also has a <code class="inline-code">ctx.fillRect()</code> method that will draw a filled-in rectangle. Rectangles on the JS Canvas are drawn with the to left corner at a specified point so we avoid the half pixel blurriness, but lines are still jagged, and we have to write a wrapper function to draw diagonal lines.
 </p>
-<p class="explanation">
 
-</p>
-<p>
-  <pre><code>
+<pre><code>
+  ctx.clearRect(0, 0, 100, 100);
+  var lineWidth = parseInt(lineWidth);
+  // Line 1
+  ctx.fillRect(0, 0, lineWidth, 40);
+  // Line 2
+  //ctx.fillRect(25, 0, 1, 40)
+  function drawRectLine(ctx, sx, sy, ex, ey, w) {
+    ctx.translate(sx, sy);
+    var yD = ey - sy;
+    var xD = ex - sx;
+    ctx.rotate(-Math.atan(xD / yD));
+    ctx.translate(-sx, -sy);
+    var l = Math.sqrt((yD * yD) + (xD * xD));
+    ctx.fillRect(sx, sy, w, l);
+    ctx.resetTransform();
+  }
+  drawRectLine(ctx, 25, 0, 60, 40, lineWidth)
+  // Stripes
+  for (var i = 0; i < 100; i += parseInt(spacing) + 1) {
+    ctx.fillRect(i, 50, lineWidth, 50);
+  }
+</code></pre>
 
-  </code></pre>
-</p>
 <canvas id="canvas"></canvas><br/>
 <ul class="canvas-controls">
-  
+  <li>
+    <label>Line Spacing:</label>
+    <input type="range" id="c3-line-spacing" min="0" max="25" value="1">
+    <label class="slider-label" id="c3-line-spacing-label" for="c3-line-spacing"></label>
+  </li>
+  <li>
+    <label>Line Width:</label>
+    <input type="range" id="c3-line-width" min="0.25" max="10" step="0.25" value="1">
+    <label class="slider-label" id="c3-line-width-label" for="c3-line-width"></label>
+  </li>
 </ul>

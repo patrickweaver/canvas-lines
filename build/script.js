@@ -35,7 +35,7 @@ function disableScaling() {
 }
 
 function enableScaling() {
-  scale(300)
+  scale(400)
   const scaleButton = document.getElementById("scale-button");
   const scaleStatus = document.getElementById("scale-status");
   scaleStatus.innerHTML = "";

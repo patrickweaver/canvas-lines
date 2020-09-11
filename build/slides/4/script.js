@@ -22,7 +22,6 @@ function drawCanvas3(spacing, lineWidth) {
     ctx.lineTo(i, 100);
     ctx.stroke();
   }
-  ctx.lineWidth = 1;
   ctx.resetTransform();
 }
 

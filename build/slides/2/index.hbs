@@ -1,20 +1,36 @@
 ---
 layout: layouts/main.hbs
-title: "Slide 1: Drawing Pixel Perfect Lines on the JS Canvas"
-cardTitle: "Drawing Lines Should be Easy, Right?"
+title: "Slide 2: Drawing Pixel Perfect Lines on the JS Canvas"
+cardTitle: "Where Exactly is a Line Drawn?"
 tags: slides
 ---
 
-<p class="explanation">
-  Wider lines are drawn with the center of the line at the start and end points.
+<p>
+  Canvas lines are drawn with the center of the line at the start and end points. This makes sense when you are trying to center things like the 20px wide line from (50, 10) to (50, 90) below. But it is confusing when you want to align something to an edge, like the line of the same width from (0, 10) to (0, 90) below. This line looks 10px wide becuase half of the line is off the canvas.
 </p>
 
-<p class="explanation">
-  
-</p>
+<pre><code>
+  ctx.lineWidth = 20;
+  ctx.beginPath();
+  ctx.moveTo(0, 10);
+  ctx.lineTo(0, 90);
+  ctx.moveTo(50, 10);
+  ctx.lineTo(50, 90);
+  ctx.stroke();
+  ctx.closePath();
+</code></pre>
+
+<canvas id="canvas"></canvas>
 
 <p>
-  <pre><code>
-  </code></pre>
+  It's also very confusing when drawing a line 1px wide:
 </p>
-<canvas id="canvas"></canvas>
+
+<blockquote>
+  <p>
+    “For example, if you try to draw a line from (1, 0) to (1, 3), the browser will draw a line covering 0.5 screen pixels on either side of x=1. The screen can’t display half a pixel, so it expands the line to cover a total of two pixels:”
+  </p>
+  <img src="../../images/canvas-half-pixels-1.jpg" alt="A diagram showing a line being drawn between two pixels." />
+  <footer><cite><a href="http://diveintohtml5.info/canvas.html">Dive Into HTML 5</a></cite></footer>
+</blockquote>
+

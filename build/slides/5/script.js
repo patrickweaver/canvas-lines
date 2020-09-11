@@ -1,8 +1,10 @@
 function drawCanvas4(spacing, lineWidth) {
+  canvas.width = 100 * dpr;
+  canvas.height = 100 * dpr;
+  ctx.scale(dpr, dpr);
+  ctx.strokeStyle = "#FF0000";
   ctx.clearRect(0, 0, 100, 100);
-  ctx.translate(0.5, 0.5);
   ctx.lineWidth = parseInt(lineWidth);
-  
   // Line 1
   ctx.beginPath();
   ctx.moveTo(0, 0);
@@ -23,8 +25,14 @@ function drawCanvas4(spacing, lineWidth) {
     ctx.stroke();
   }
   ctx.lineWidth = 1;
-  ctx.resetTransform();
 }
+
+const dprValueElement = document.getElementById("dpr-value");
+dprValueElement.innerHTML = dpr;
+
+
+
+
 
 // line Spacing
 const c4LineSpacing = document.getElementById("c4-line-spacing");

@@ -1,10 +1,11 @@
 function drawCanvas2() {
+  ctx.lineWidth = 20;
   ctx.beginPath();
-  ctx.lineWidth = 50;
+  ctx.moveTo(0, 10);
+  ctx.lineTo(0, 90);
   ctx.moveTo(50, 10);
   ctx.lineTo(50, 90);
   ctx.stroke();
   ctx.closePath();
-  ctx.beginPath();
 }
 drawCanvas2();

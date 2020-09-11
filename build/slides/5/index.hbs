@@ -1,21 +1,23 @@
 ---
 layout: layouts/main.hbs
-title: "Slide 📮: Drawing Pixel Perfect Lines on the JS Canvas"
-cardTitle: ""
+title: "Slide 5: Drawing Pixel Perfect Lines on the JS Canvas"
+cardTitle: "Device Pixel Ratio"
 tags: slides
 ---
 
 <p class="explanation">
-  Offset the canvas by 0.5 pixels
+  Your operating system and browser can provide your code with your “Device Pixel Ratio”. I have read that this number is useful when working with high resolution displays that actually can draw things at half-pixels. Your browser's current DPR is: <span id="dpr-value">unknown</span> (refresh with the window on a different screen to update).
 </p>
 <p class="explanation">
-
+  The width and height of the canvas below is <code class="inline-code">100 * DPR</code>. On a high resolution DPR 2 display (like an Apple “retina” display) you should see crisp lines, on a standard DPR 1 display you should see the same blurry lines (screenshots below.)
 </p>
-<p>
-  <pre><code>
 
-  </code></pre>
-</p>
+<pre><code>
+  canvas.width = 100 * dpr;
+  canvas.height = 100 * dpr;
+  ctx.scale(dpr, dpr);
+</code></pre>
+
 <canvas id="canvas"></canvas><br/>
 <ul class="canvas-controls">
   <li>
@@ -29,3 +31,22 @@ tags: slides
     <label class="slider-label" id="c4-line-width-label" for="c4-line-width"></label>
   </li>
 </ul>
+
+<h3>
+  High Resolution DPR 2 Display:
+</h3>
+<p>
+  <img class="screenshot" src="../../images/DPR2.png" alt="A screenshot of crisp lines taken on a DPR 2 display" />
+</p>
+<h3>
+  Standard Resolution DPR 1 Display:
+</h3>
+<p>
+  <img class="screenshot" src="../../images/DPR1.png" alt="A screenshot of blurry lines taken on a DPR 1 display" />
+</p>
+<h3>
+  Windows Scaled 150% DPR 1.5 Display:
+</h3>
+<p>
+  <img class="screenshot" src="../../images/DPR1-5.png" alt="A screenshot of lines taken on a DPR 1.5 display" />
+</p>
