@@ -4,6 +4,8 @@ for (var i = 0; i < matches.length; i++) {
   e.textContent = e.textContent.replace(/^\s+/mg, "");
 }
 
+var dpr = window.devicePixelRatio || 1;
+
 const canvas1 = document.getElementById("canvas-1");
 const ctx1 = canvas1.getContext("2d");
 const canvas2 = document.getElementById("canvas-2");
